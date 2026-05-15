@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="SS Garage Cars — Oficina mecânica em Ponta Grossa. Qualidade, garantia e confiança em cada serviço. Revisão, freios, suspensão, injeção eletrônica e muito mais." />
 <title>SS Garage Cars — Qualidade, garantia e confiança</title>
-<link rel="icon" type="image/png" href="logo.jpeg">
 
 <!-- Fontes -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,11 +126,20 @@ p{line-height:1.7;color:var(--muted);font-size:16px}
 .btn svg{width:18px;height:18px}
 
 /* Logo display */
-.hero-logo-wrap{position:relative;aspect-ratio:1/1;max-width:520px;margin-inline:auto;display:grid;place-items:center}
+.hero-logo-wrap{
+  position:relative;aspect-ratio:1/1;max-width:520px;margin-inline:auto;display:grid;place-items:center;
+  /* halo branco com gradiente: branco no centro -> transparente nas bordas */
+  background:radial-gradient(circle at center,
+    rgba(255,255,255,.95) 28%,
+    rgba(255,255,255,.55) 42%,
+    rgba(255,255,255,.18) 55%,
+    rgba(255,255,255,0)   68%);
+  border-radius:50%;
+}
 .hero-logo-wrap::before{
   content:"";position:absolute;inset:0;border-radius:50%;
   background:conic-gradient(from 0deg, transparent 0deg, var(--accent) 60deg, transparent 120deg, var(--accent-2) 200deg, transparent 280deg, var(--accent) 360deg);
-  filter:blur(40px);opacity:.45;animation:rotate 18s linear infinite
+  filter:blur(40px);opacity:.45;animation:rotate 18s linear infinite;z-index:-1
 }
 .hero-logo-wrap::after{
   content:"";position:absolute;inset:8%;border-radius:50%;
@@ -139,7 +147,14 @@ p{line-height:1.7;color:var(--muted);font-size:16px}
   animation:rotate 60s linear infinite reverse
 }
 @keyframes rotate{to{transform:rotate(360deg)}}
-.hero-logo{position:relative;width:88%;filter:drop-shadow(0 30px 50px rgba(0,0,0,.7)) drop-shadow(0 0 30px rgba(14,165,255,.25));animation:float 6s ease-in-out infinite}
+.hero-logo{
+  position:relative;width:88%;
+  filter:drop-shadow(0 30px 50px rgba(0,0,0,.7)) drop-shadow(0 0 30px rgba(14,165,255,.25));
+  animation:float 6s ease-in-out infinite;
+  /* máscara radial: o centro fica nítido, as bordas (cantos brancos do JPEG) somem */
+  -webkit-mask-image:radial-gradient(circle at center, #000 55%, rgba(0,0,0,.7) 65%, transparent 78%);
+  mask-image:radial-gradient(circle at center, #000 55%, rgba(0,0,0,.7) 65%, transparent 78%);
+}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 
 /* Hero stats strip */
@@ -520,6 +535,7 @@ footer{padding:60px 0 30px;background:#06070A;border-top:1px solid var(--line)}
       <div class="gal-item gal-2 reveal delay-1"><img src="espera.jpg" alt="Sala de espera"><div class="gal-cap">Sala de espera</div></div>
       <div class="gal-item gal-3 reveal delay-2"><img src="carro_reparo.jpg" alt="Embreagem em reparo"><div class="gal-cap">Embreagem em reparo</div></div>
       <div class="gal-item gal-4 reveal delay-3"><img src="trabalho1.jpg" alt="Diagnóstico"><div class="gal-cap">Diagnóstico</div></div>
+      <div class="gal-item gal-5 reveal delay-4"><img src="equipe1.png" alt="Luana no atendimento"><div class="gal-cap">Atendimento Luana</div></div>
     </div>
   </div>
 </section>
@@ -623,14 +639,10 @@ footer{padding:60px 0 30px;background:#06070A;border-top:1px solid var(--line)}
       </div>
     </div>
     <div class="copy">
-  <span>© <span id="yr"></span> SS Garage Cars · Todos os direitos reservados.</span>
-  <span>
-    Feito com amor ❤ por 
-    <a href="https://camargotechdesign.com.br/" target="_blank">
-      Camargo Tech & Design
-    </a>
-  </span>
-</div>
+      <span>© <span id="yr"></span> SS Garage Cars · Todos os direitos reservados.</span>
+      <span>Feito com cuidado em Ponta Grossa/PR.</span>
+    </div>
+  </div>
 </footer>
 
 <!-- ================== WHATSAPP FAB ================== -->
