@@ -37,7 +37,7 @@
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body.loading{overflow:hidden}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 button{font:inherit;border:none;cursor:pointer;color:inherit}
 
@@ -161,7 +161,7 @@ p{line-height:1.7;color:var(--muted);font-size:16px}
 @keyframes streak{0%{transform:translateX(0);opacity:0}10%{opacity:.7}100%{transform:translateX(480%);opacity:0}}
 
 .hero .container{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
-@media(max-width:960px){.hero .container{grid-template-columns:1fr;text-align:center}}
+@media(max-width:960px){.hero .container{grid-template-columns:1fr;text-align:center}.hero-logo-wrap{max-width:300px}.hero-logo{width:52%}}
 
 .hero-tag{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:999px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#C9CDD2;margin-bottom:24px}
 .hero-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--whats);box-shadow:0 0 12px var(--whats);animation:pulse 2s infinite}
@@ -201,7 +201,7 @@ p{line-height:1.7;color:var(--muted);font-size:16px}
 .btn svg{width:18px;height:18px}
 
 /* Logo display */
-.hero-logo-wrap{position:relative;aspect-ratio:1/1;max-width:520px;width:100%;margin-inline:auto;display:grid;place-items:center;perspective:900px;opacity:0;transform:scale(.8) rotate(-10deg);transition:1.3s var(--ease) .3s}
+.hero-logo-wrap{position:relative;aspect-ratio:1/1;max-width:420px;width:100%;margin-inline:auto;display:grid;place-items:center;perspective:900px;opacity:0;transform:scale(.8) rotate(-10deg);transition:1.3s var(--ease) .3s}
 .ready .hero-logo-wrap{opacity:1;transform:none}
 .disc{position:absolute;inset:9%;border-radius:50%;background:radial-gradient(circle at 50% 35%,#1d2530 0%,#0c0f14 55%,#050507 100%);box-shadow:inset 0 0 0 1px rgba(201,205,210,.12),inset 0 -30px 60px rgba(14,165,255,.08),0 40px 90px rgba(0,0,0,.7)}
 .glow-ring{position:absolute;inset:4%;border-radius:50%;
@@ -216,10 +216,10 @@ p{line-height:1.7;color:var(--muted);font-size:16px}
 .orbit{position:absolute;inset:6%;border-radius:50%;animation:rotate 4s linear infinite}
 .orbit::before{content:"";position:absolute;top:-5px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#fff;box-shadow:0 0 14px 4px var(--accent)}
 @keyframes rotate{to{transform:rotate(360deg)}}
-.hero-logo{position:relative;width:70%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.8)) drop-shadow(0 0 24px rgba(14,165,255,.25));transition:transform .2s ease-out;will-change:transform}
+.hero-logo{position:relative;width:54%;max-width:260px;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.8)) drop-shadow(0 0 24px rgba(14,165,255,.25));transition:transform .2s ease-out;will-change:transform}
 .logo-float{position:relative;display:grid;place-items:center;width:100%;animation:float 6s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-.logo-shine{position:absolute;inset:18%;border-radius:50%;overflow:hidden;pointer-events:none;mix-blend-mode:overlay}
+.logo-shine{position:absolute;inset:26%;border-radius:50%;overflow:hidden;pointer-events:none;mix-blend-mode:overlay}
 .logo-shine::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:btnShine 5s ease-in-out infinite 1.5s}
 
 /* Hero stats strip */
