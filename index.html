@@ -838,6 +838,27 @@ footer{padding:60px 0 30px;background:#06070A;border-top:1px solid var(--line);p
   // Ano
   document.getElementById('yr').textContent = new Date().getFullYear();
 
+  // ---------- Links internos sem "#" na URL ----------
+  const cleanUrl = () => history.replaceState(null, '', location.pathname + location.search);
+  const goTo = id => {
+    if (id === 'top') { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); return; }
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  };
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    e.preventDefault();
+    goTo(id);
+  });
+  if (location.hash) {
+    const id = decodeURIComponent(location.hash.slice(1));
+    cleanUrl();
+    window.addEventListener('load', () => setTimeout(() => goTo(id), 50));
+  }
+
   // ---------- Intro (conta-giros) ----------
   const ticks = document.getElementById('ticks');
   for (let i = 0; i <= 8; i++) {
