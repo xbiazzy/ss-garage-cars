@@ -891,6 +891,14 @@ footer{padding:60px 0 30px;background:#06070A;border-top:1px solid var(--line);p
   // Ano
   document.getElementById('yr').textContent = new Date().getFullYear();
 
+  // ---------- Sempre abrir/recarregar no topo ----------
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  const hadHash = !!location.hash;
+  if (!hadHash) {
+    window.scrollTo(0, 0);
+    window.addEventListener('load', () => window.scrollTo(0, 0));
+  }
+
   // ---------- Links internos sem "#" na URL ----------
   const cleanUrl = () => history.replaceState(null, '', location.pathname + location.search);
   const goTo = id => {
